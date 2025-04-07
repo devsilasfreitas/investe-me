@@ -9,11 +9,10 @@ import {
 import { ScreenContainer } from "../components/ScreenContainer";
 import { useUser } from "../contexts/UserContext";
 import { Icon } from "react-native-elements";
-import { act, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Action, getActions } from "../loaders/get-actions";
 import { Props } from "../Route";
 import { ActionCard } from "../components/Action";
-import { Loading } from "./Loading";
 
 export function Home({ navigation }: Props) {
   const { user, clearUser } = useUser();
@@ -29,9 +28,6 @@ export function Home({ navigation }: Props) {
       .catch((error) => {
         console.error("Error fetching actions:", error);
       })
-      .finally(() => {
-        // setLoading(false);
-      });
   }, []);
 
   if (!user) {
@@ -78,7 +74,7 @@ export function Home({ navigation }: Props) {
                     action.stock !== highestChange &&
                     action.stock !== lowestChange
                 ),
-              ]}
+              ].filter((action) => action !== undefined)}
               renderItem={({ item }) => (
                 <ActionCard
                   action={item}
@@ -91,7 +87,15 @@ export function Home({ navigation }: Props) {
             />
           </View>
         )) : (
-          <Text style={{ color: "white" }}>Carregando ações...</Text>
+          <Text 
+            style={{ 
+              color: "white",
+              fontSize: 20,
+              fontWeight: "bold",
+              textAlign: "center",
+              marginTop: 20,
+            }}
+            >Carregando ações...</Text>
       )}
     </ScreenContainer>
   );

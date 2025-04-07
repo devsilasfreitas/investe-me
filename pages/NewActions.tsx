@@ -43,7 +43,17 @@ export function NewActions({ navigation }: Props) {
       
       <View style={{ flex: 1 }}>
         {loading ? (
-          <Text style={{ color: 'black' }}>Loading...</Text>
+          <Text 
+            style={{ 
+              color: 'white',
+              fontSize: 20,
+              textAlign: 'center',
+              fontWeight: 'bold',
+              marginTop: 20,
+            }}
+          >
+            Carregando...
+          </Text>
         ) : (
           <FlatList
             data={search.length > 0 ? actions.filter(action => (
