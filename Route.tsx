@@ -6,19 +6,21 @@ import { useUser } from "./contexts/UserContext";
 import { Loading } from "./pages/Loading";
 import { Home } from "./pages/Home";
 import { Settings } from "./pages/Settings";
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { Details } from "./pages/Details";
 
-type RootStackParamList = {
+export type RootStackParamList = {
+  Loading: undefined;
   Home: undefined;
   NewActions: undefined;
   Welcome: undefined;
   Settings: undefined;
+  Details: {
+    actionStock: string;
+  }
 };
 
-export type Props = NativeStackScreenProps<RootStackParamList>;
-
 export function Router () {
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator<RootStackParamList>();
 
   const { user } = useUser();
 
@@ -33,6 +35,7 @@ export function Router () {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="NewActions" component={NewActions} />
           <Stack.Screen name="Settings" component={Settings} />
+          <Stack.Screen name="Details" component={Details} />
         </Stack.Navigator>
       ) : (
         <Stack.Navigator screenOptions={{ headerShown: false }}>

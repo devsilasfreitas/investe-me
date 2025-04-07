@@ -11,8 +11,11 @@ import { useUser } from "../contexts/UserContext";
 import { Icon } from "react-native-elements";
 import { useEffect, useState } from "react";
 import { Action, getActions } from "../loaders/get-actions";
-import { Props } from "../Route";
 import { ActionCard } from "../components/Action";
+import { RootStackParamList } from "../Route";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export function Home({ navigation }: Props) {
   const { user, clearUser } = useUser();
@@ -76,12 +79,18 @@ export function Home({ navigation }: Props) {
                 ),
               ].filter((action) => action !== undefined)}
               renderItem={({ item }) => (
-                <ActionCard
-                  action={item}
-                  selected={[highestChange, lowestChange].includes(item.stock)}
-                  highestChange={highestChange === item.stock}
-                  lowestChange={lowestChange === item.stock}
-                />
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Details", {
+                    actionStock: item.stock
+                  })}
+                >
+                  <ActionCard
+                    action={item}
+                    selected={[highestChange, lowestChange].includes(item.stock)}
+                    highestChange={highestChange === item.stock}
+                    lowestChange={lowestChange === item.stock}
+                  />
+                </TouchableOpacity>
               )}
               style={styles.actionsContainer}
             />

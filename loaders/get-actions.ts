@@ -15,9 +15,7 @@ export interface Action {
 export async function getActions(): Promise<Action[]> {
   try {
     const response = await api.get("/quote/list");
-    return response.data.stocks.filter((action: Action) => {
-      return action.type === "stock";
-    });
+    return response.data.stocks;
   } catch (error) {
     console.error("Error fetching actions:", error);
     throw error;

@@ -23,7 +23,7 @@ export function ActionCard({ action, selected, highestChange, lowestChange }: Ac
         width="50"
         height="50"
         style={styles.logo}
-
+        onError={() => {}}
       />
       <View style={{ flex: 1 }}>
         <Text 
