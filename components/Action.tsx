@@ -54,14 +54,14 @@ export function ActionCard({ action, selected, highestChange, lowestChange }: Ac
             <Text 
               style={{ 
                 ...styles.stat,
-                color: "red"
+                color: "#fd0e04"
               }}
             >Maior desvalorização
             </Text>
             <Icon
               name="arrow-down"
               type="material-community"
-              color="red"
+              color="#fd0e04"
               size={20}
               style={{ marginLeft: 4 }}
             />
@@ -85,7 +85,12 @@ export function ActionCard({ action, selected, highestChange, lowestChange }: Ac
           <Text 
           style={{
             ...styles.change,
-            color: action.change > 0 ? "#0ead69" : "red",
+            backgroundColor: action.change > 0 ? "#0ead69" : "#fd0e04",
+            padding: 4,
+            borderRadius: 6,
+            shadowColor: "black",
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.8,
           }}
           >
             {action.change.toFixed(2)}%
@@ -143,7 +148,7 @@ const styles = StyleSheet.create({
   },
   change: {
     fontSize: 14,
-    color: "#999",
+    color: "#fff",
     fontWeight: "bold",
   },
   volume: {

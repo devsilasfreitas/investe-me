@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   input: {
-    backgroundColor: "#333",
     padding: 8,
     borderRadius: 8,
     color: "white",

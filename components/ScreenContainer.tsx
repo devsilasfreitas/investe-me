@@ -11,7 +11,7 @@ export function ScreenContainer({ children }: React.PropsWithChildren) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#323232',
+    backgroundColor: '#121212',
     paddingHorizontal: 20,
     paddingTop: 40,
     paddingBottom: 10
